@@ -33,10 +33,12 @@ public class Main {
         tickets.admitTicket(5);
         
         //invalid behavior
-        tickets.admitTicket(4);  //this looks like "silent failure..."
+        tickets.admitTicket(4);
 
         TB.printAll();
         TB.printForEvent(meeting);
+        
+        
         
         /*
         System.out.println("--- New tickets ---");
