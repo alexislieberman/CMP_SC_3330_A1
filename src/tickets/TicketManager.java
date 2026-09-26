@@ -21,17 +21,21 @@ public class TicketManager {
 	
 	public boolean cancelTicket(int id) {
 		Ticket ticket = ticketBook.findById(id);
+		
 		if(ticket==null) {
 			return false;
 		}
+		
 		return ticket.cancel();
 	}
 	
 	public boolean admitTicket(int id) {
 		Ticket ticket = ticketBook.findById(id);
+		
 		if(ticket==null) {
 			return false;
 		}
+		
 		return ticket.admit();
 	}
 	

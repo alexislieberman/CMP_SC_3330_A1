@@ -36,6 +36,7 @@ public class TicketBook {
 	}
 	
 	public void printAll() {
+		System.out.println("\nPrinting All Tickets:\n");
 		for (int i = 0; i < this.count; i++) {
 			System.out.println(this.tickets[i].toString());
 		}
@@ -46,6 +47,7 @@ public class TicketBook {
 			return;
 		}
 		
+		System.out.println("\nPrinting All Tickets for:\n" + event.toString() + "\n");
 		for (int i = 0; i < this.count; i++) {
 			//checks equality by reference, not value
 			if(this.tickets[i].getEvent() == event) { 
