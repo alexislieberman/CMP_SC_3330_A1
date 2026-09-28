@@ -2,11 +2,18 @@ package tickets;
 
 public class Event{
 	
-	private String name = "Cybersecurity Guest Lecture ";
-	private String location = " Memorial Union";
+	private String name;
+	private String location;
 	
 	
 	public Event(String name, String location) {
+		if(name==null || name.length()==0) {
+			throw new IllegalArgumentException("Event name cannot be null or blank.");
+		}
+		if(location==null || location.length()==0) {
+			throw new IllegalArgumentException("Event location cannot be null or blank.");
+		}
+		
 		this.name = name;
 		this.location = location;
 	}

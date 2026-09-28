@@ -32,6 +32,7 @@ public class Main {
         tickets.cancelTicket(4);
         tickets.admitTicket(5);
         
+        
         //invalid behavior
         tickets.admitTicket(4);
 

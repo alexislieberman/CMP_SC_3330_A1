@@ -23,8 +23,10 @@ public class TicketManager {
 		Ticket ticket = ticketBook.findById(id);
 		
 		if(ticket==null) {
+			System.out.println("\nERROR: Ticket not found.");
 			return false;
 		}
+
 		
 		return ticket.cancel();
 	}
@@ -33,10 +35,10 @@ public class TicketManager {
 		Ticket ticket = ticketBook.findById(id);
 		
 		if(ticket==null) {
+			System.out.println("\nERROR: Ticket not found.");
 			return false;
 		}
 		
 		return ticket.admit();
 	}
-	
 }

@@ -6,6 +6,13 @@ public class TicketType {
 	private double price;
 	
 	public TicketType(String name, double price) {
+		if(name==null || name.length()==0) {
+			throw new IllegalArgumentException("Ticket Type cannot be null or blank.");
+		}
+		if(price<0) {
+			throw new IllegalArgumentException("Price must be greater than or equal to 0");
+		}
+		
 		this.name = name;
 		this.price = price;
 	}

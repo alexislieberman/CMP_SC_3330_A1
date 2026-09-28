@@ -10,11 +10,17 @@ public class Ticket {
 
    
     public Ticket(int id, Event event, TicketType ticketType, String studentName) {
+    	if(id <=0 ) {
+    		throw new IllegalArgumentException("id must be greater than 0.");
+    	}
     	if (event == null) {
     	    throw new IllegalArgumentException("Event cannot be null.");
     	}
     	if (ticketType == null) {
     	    throw new IllegalArgumentException("Ticket type cannot be null.");
+    	}
+    	if (studentName == null || studentName.length()==0) {
+    	    throw new IllegalArgumentException("Student name cannot be null or blank.");
     	}
         
         this.id = id;
@@ -26,35 +32,61 @@ public class Ticket {
     }
 
     public boolean cancel() {
-        if (!isActive()) {
+        if (isCanceled()) {
+    		System.out.println("\nERROR: Ticket already cancelled.");
             return false;
         }
+        
         canceled = true;
-        return true;
+        return canceled;
     }
     
     public boolean admit() {
-        if (!isActive()) {
+        if (isAdmitted()) {
+        	System.out.println("\nERROR: Ticket already admitted.");
             return false;
         }
+        if (isCanceled()) {
+        	System.out.println("\nERROR: Ticket cancelled. Cannot admit.");
+            return false;
+        }
+        
         admitted = true;
-        return true;
+        return admitted;
     }
     
-    public boolean isCanceled() { return canceled; }
-    public boolean isAdmitted() { return admitted; }
-    public boolean isActive() { return !canceled && !admitted; }
+    public boolean isCanceled() { 
+    	return canceled; 
+    }
+    public boolean isAdmitted() { 
+    	return admitted; 
+    }
+    public boolean isActive() { 
+    	return !canceled && !admitted; 
+    }
+    
     
     public String getStatus() {
-        if (canceled) return "CANCELED";
-        if (admitted) return "ADMITTED";
+        if (canceled) 
+        	return "CANCELED";
+        if (admitted) 
+        	return "ADMITTED";
+        
         return "ACTIVE";
     }
  
-    public int getId() { return id; }
-    public Event getEvent() { return event; }
-    public TicketType getTicketType() { return ticketType; }
-    public String getStudentName() { return studentName; }
+    public int getId() { 
+    	return id; 
+    }
+    public Event getEvent() { 
+    	return event; 
+    }
+    public TicketType getTicketType() { 
+    	return ticketType; 
+    }
+    public String getStudentName() { 
+    	return studentName; 
+    }
     
     public String toString() {
     	return String.format("Ticket #%d | %s | %s | %s | %s",
